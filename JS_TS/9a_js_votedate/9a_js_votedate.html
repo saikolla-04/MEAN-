@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Validation for Voting</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #output {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Age Validation for Voting</h2>
+
+  <label for="name">Enter Name: </label>
+  <input type="text" id="name">
+  <br>
+  <label for="doe">Date of Election: </label>
+  <input type="date" id="doe">
+  <br>
+  <label for="dob">Enter Date of Birth: </label>
+  <input type="date" id="dob">
+  <br>
+  <button onclick="validateAge()">Check Eligibility</button>
+  <div id="output"></div>
+  <script src="script.js"></script>
+
+</body>
+</html>

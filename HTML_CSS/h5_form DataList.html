@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1> Configuration Form</h1>
+<form action="process_OS.php" method="post">   <!-- "post" for hidden data transfer-->
+<br>
+<h2>Select OS:</h2>
+  <input list="operatingsystems" name="os">
+  <datalist id="operatingsystems" class="" multiple >
+    <option value="Kaushik OS">
+    <option value="Windows7">
+    <option value="Windows10">
+    <option value="Unix">
+    <option value="Ubuntu">
+    <option value="Android">
+    <option value="MacOS">
+  </datalist>
+
+  <h2>Select Browser:</h2>
+  <input list="browsers" name="br">
+
+  <datalist id="browsers" class="" multiple >
+    <option value="Safari">
+    <option value="IE">
+    <option value="Chrome">
+    <option value="Opera">
+  </datalist>
+  <br> <br>
+  
+  <input type="submit" value="Send">
+</form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous JavaScript in the Browser</title>
+</head>
+<body>
+    <h2>Asynchronous Function</h2>
+    <button onclick="fetchData()">Fetch Data</button>
+
+    <p id="result"></p>
+
+    <script>
+        // Function to simulate an asynchronous operation (Fetch API)
+        async function fetchData() {
+            try {
+                // Use the Fetch API to make an asynchronous request
+                //let response = await fetch('https://domain.com/data/1');
+                let response = await fetch('data.json');
+                let data = await response.json();
+
+                // Update the result on the webpage
+                document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

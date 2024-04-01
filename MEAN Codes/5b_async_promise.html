@@ -1,0 +1,51 @@
+<!-- Asynchronous programming  -->
+<!-- 
+    5.b Course Name: Javascript
+Module Name: Introduction to Asynchronous Programming, Callbacks, Promises, 
+Async and Await, Executing Network Requests using Fetch API
+Simulate a periodic stock price change and display on the console. Hints: (i) Create a 
+method which returns a random number - use Math.random, floor and other methods 
+to return a rounded value. (ii) Invoke the method for every three seconds and stop 
+when the count is 5 – use the setInterval method.
+Since setInterval is an async method, enclose the code in a Promise and handle the response generated in a success callback.
+The random value returned from the method every time can be used as a stock price and displayed on the console.
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stock Price Simulation</title>
+</head>
+<body>
+<script>
+    function generateRandomPrice() {
+        const minPrice = 100;
+        const maxPrice = 200;
+        const randomPrice = Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
+        return randomPrice;
+      }
+
+    ////Without PRomise
+    const price = generateRandomPrice();
+    document.write(`Stock price: ${price} <br>`);      
+
+    
+    // Promise arrow function with 5 interval runs      
+      new Promise((resolve, reject) => {
+        let count = 0;
+        const intervalId = setInterval(() => {
+          const price = generateRandomPrice();
+          document.write(`Stock price: ${price} <br>`);
+          count++;
+          if (count === 15) {
+            clearInterval(intervalId);
+            resolve("Promise simulation completed.");
+          }
+        }, 5000); // Update every 3 seconds
+      })
+      .then((message) => document.write(message)); // Log a message on successful completion
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="myLocation">Find my location on Earth</p>
+<button onclick="getlocation()">Where Am I</button>
+
+<div id="whereonmap">   </div>
+
+<script>
+var hereInHtml = document.getElementById("myLocation");
+
+function getlocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showLocation, showError);
+    }
+
+    else {
+        hereInHtml.innerHTML = "This browser does not support GEOLOCATION method of JavaScript.";
+    }
+}
+
+findPickupLocations()   
+
+function showLocation(location) {
+    var lat_long = location.coords.latitude + "," + location.coords.longitude;
+
+    //var pickupLocations = new array;
+    //pickupLocations = findPickupLocations(location.coords.latitude, location.coords.longitude);
+
+    var mapimage = "https://maps.googleapis.com/maps/api/staticmap?center="
+    +lat_long+"&zoom=14&size=400x300&sensor=false&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
+    document.getElementById("whereonmap").innerHTML = "<img src='"+mapimage+"'>";
+}
+//To use this code on your website, get a free API key from Google.
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            hereInHtml.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.location_UNAVAILABLE:
+            hereInHtml.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            hereInHtml.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            hereInHtml.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+</script>
+
+</body>
+</html>

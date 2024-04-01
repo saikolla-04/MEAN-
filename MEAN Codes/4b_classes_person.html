@@ -1,0 +1,51 @@
+<!-- 
+4.b Course Name: Javascript
+Module Name: Working With Classes, Creating and Inheriting Classes
+Create an Employee class extending from a base class Person. Hints: 
+(i) Create a class Person with name and age as attributes. 
+(ii) Add a constructor to initialize the values 
+(iii) Create a class Employee extending Person with additional attributes role and contact  
+(iv) The constructor of the Employee to accept the name, age, role and contact where name and age are initialized through a call to super to invoke the base class constructor  
+(v)Add a method getDetails() to display all the details of Employee.
+
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Person Employee Classes</title>
+    <script>
+        class Person {
+            constructor(nm, ag) {
+                this.name = nm;
+                this.age = ag;
+            }
+        }
+
+        class Employee extends Person {
+            constructor(nm, ag, rol, cont) {
+                super(nm, ag);
+                this.role = rol;
+                this.contact = cont;
+            }
+            getDetails() {
+                document.write("The details of employee are: <br><br>");
+                document.write("Name: "+this.name+"<br>");
+                document.write("Age: "+this.age+"<br>");
+                document.write("Role: "+this.role+"<br>");
+                document.write("Contact: "+this.contact+"<br>");
+            }
+        }
+
+        let e1 = new Employee("Raani", "22", "Psychology Expert", "9998887777");
+        e1.getDetails();
+        let eBhav = new Employee("Bhavani", "19", "Tech Expert", "9998667777");
+        eBhav.getDetails();
+    </script>
+</head>
+
+</html>
+
+
+

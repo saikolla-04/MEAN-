@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<title>Gross + Net Pay</title>
+
+<style>
+  #gross{
+    background-color: lightyellow;
+    border-color: blue;
+    color: black;
+    float:left;
+  }
+  #net{
+    background-color: lightgreen;
+    border-color: blue;
+    color: black;
+    float:left;
+  }
+</style>
+<h1>Hourly Pay Calculator</h1>
+<div>Gross Pay: <br><div id="gross">0000.00</div></div>
+<br>
+<div>Net pay:  <br><div id="net">0000.00</div></div>
+<br><br><br>
+<script>
+function calcGrossNet() {
+var rate = document.getElementById("payrate").value;
+var hours =document.getElementById("hours").value;
+var gross = hours * rate;
+var net = gross * .85 ;
+
+ if (gross != null) {
+    document.getElementById("gross").innerHTML = gross;
+}
+ if (net != null) {
+    document.getElementById("net").innerHTML =net;
+        }
+
+  }
+</script>
+<body>
+
+Pay / Hour: <input type="text" id="payrate"><br>
+Hours Worked: <input type="text" id="hours"><br>
+<input type="submit" value="Gross &amp; Net Pay" onclick="calcGrossNet()">
+
+</body>
+</html>

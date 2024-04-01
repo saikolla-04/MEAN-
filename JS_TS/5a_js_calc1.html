@@ -1,0 +1,75 @@
+<!--Seperatte method for each operator -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1> Simple Calculator</h1>
+  <div id="calculator">
+    <label>Enter number1</label><br>
+    <input type="text" id="n1"><br><br>
+    
+    <label>Enter number2</label><br>
+    <input type="text" id="n2"><br><br>
+    <div>
+      <button onclick="add()">+</button>
+      <button onclick="sub()">-</button>
+      <button onclick="mult()">*</button>
+      <button onclick="div()">/</button>
+      <button onclick="big()">Big</button><br><br>
+
+      <input type="text" id="output" disabled>
+    </div>
+<script>
+  function add(){
+    var num1=parseFloat(document.getElementById('n1').value);
+    var num2=parseFloat(document.getElementById('n2').value);
+    const result = eval(num1+num2);
+    //Works as strings with eval(). see 5a_js_calc.html
+    //const result = eval('2'+'*5'); 
+    //display in output
+    document.getElementById("output").value=result;
+}
+function sub(){
+  var num1=parseFloat(document.getElementById('n1').value);
+  var num2=parseFloat(document.getElementById('n2').value);
+  const result = eval(num1-num2);
+  document.getElementById("output").value=result;
+}
+function mult(){
+  var num1=parseFloat(document.getElementById('n1').value);
+  var num2=parseFloat(document.getElementById('n2').value);
+  const result = eval(num1*num2);
+  document.getElementById("output").value=result;
+}
+function div(){
+  var num1=parseFloat(document.getElementById('n1').value);
+  var num2=parseFloat(document.getElementById('n2').value);
+  const result = eval(num1/num2);
+  document.getElementById("output").value=result;
+}
+function big(){
+  var num1=parseFloat(document.getElementById('n1').value);
+  var num2=parseFloat(document.getElementById('n2').value);
+  const result = Math.max(num1,num2);
+  document.getElementById("output").value=result;
+}
+</script>
+</body>
+</html>

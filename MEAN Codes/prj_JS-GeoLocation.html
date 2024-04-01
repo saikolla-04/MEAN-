@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2><u>Geographic Coordinates</u></h2>
+<button onclick="getMySpotOnMap()" style="margin-top:10px;">
+    Show My Coordinates
+</button>
+
+<div style="width:300px; height:200px;background:green;margin:30px;">
+<p id="coordinates"style="padding-top:80px;padding-left:10px;font-size:25px;color:white"></p>
+</div>
+<script>
+var hereInHtml = document.getElementById("coordinates");
+
+function getMySpotOnMap() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(displaySpot);
+    }
+    else {
+        hereInHtml.innerHTML = "This browser does not support GEOLOCATION method of JavaScript.";
+    }
+}
+
+function displaySpot(location) {
+    hereInHtml.innerHTML = "Latitude: " + location.coords.latitude +
+    "<br>Longitude: " + location.coords.longitude;
+}
+</script>
+
+</body>
+</html>

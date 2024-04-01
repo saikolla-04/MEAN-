@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#receive_here {
+    width: 400px;
+    height: 200px;
+    padding: 10px;
+    background: red;
+}
+</style>
+<script>
+function acceptMyDrop(eventLocalVariable) {
+    eventLocalVariable.preventDefault();
+}
+
+function drag(eventLocalVariable) {
+    eventLocalVariable.dataTransfer.setData("text", eventLocalVariable.target.id);
+}
+
+function drop(eventLocalVariable) {
+    eventLocalVariable.preventDefault();
+    var data = eventLocalVariable.dataTransfer.getData("text");
+    eventLocalVariable.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<p>Drag Drop feature can be simulated using ondrop &amp; ondragover &amp; ondragstart events.</p>
+
+<div id="receive_here" ondrop="drop(event)" ondragover="acceptMyDrop(event)"></div>
+<br>
+<img id="send_me1" src="cherries.jpg" draggable="true" ondragstart="drag(event)" width="300" height="100">
+<img id="send_me2" src="cherries.jpg" draggable="true" ondragstart="drag(event)" width="300" height="90">
+
+</body>
+</html>

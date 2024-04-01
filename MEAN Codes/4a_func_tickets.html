@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Summary</title>
+    <style>
+        div#maincontent {
+            height: 250px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        h2 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+ 
+<body>
+    <center>
+        <div id="heading">
+            <h2>Booking Summary</h2>
+        </div>
+        <div id="maincontent">
+        <script>
+        let seatsBooked = 4;
+        const ticketCost = 150;
+        var d1 = 5;
+        var d2 = 7;
+        var d3 = 9;
+        var d4 = 11;
+        var d5 = 13;
+        let totalCost;
+        var discCost1,discCost2,discCost3,discCost4,discCost5;
+        var discTotalCost=0;
+
+        discCost1 = ticketCost*(1-.05);
+        discCost2 = ticketCost*(1-.07);
+        discCost3 = ticketCost*(1-.09);
+        discCost4 = ticketCost*(1-.11);
+        discCost5 = ticketCost*(1-.13);
+        //Functions //
+        function calculateCost(seats){
+            return seats*ticketCost;
+        }
+        //function calculateDiscount(seats){
+        //Arrow Function; similar to above function declaration
+        calculateDiscount = (seats) => {
+        
+            if (seats==1 || seats==2){
+                return seats*ticketCost;
+            }
+            else{
+            for (let custCount=1; custCount<=seats; custCount++) {    
+                let tempCost=0;
+                if(custCount==1)
+                    tempCost=discCost1;
+                else if(custCount==2)
+                    tempCost=discCost2;
+                else if(custCount==3)
+                    tempCost=discCost3;
+                else if(custCount==4)
+                    tempCost=discCost4;
+                else
+                    tempCost=discCost5;
+                
+                discTotalCost+=tempCost;
+            }
+            }
+            return discTotalCost;
+        }
+        
+
+        //Write the code to display the booking summary
+        if(seatsBooked<1){
+            document.write("Booking is not allowed!<br>");
+            document.write("You must buy atleast 1 upto 5 tickets<br>");
+        }
+        else if (seatsBooked>=6){
+            document.write("Booking is not allowed!<br>");
+            document.write("You must buy atleast 1, & only upto 5 tickets<br>");
+        }
+        else if (seatsBooked<=2){
+            document.write("Actual cost per ticket: "+ticketCost + "<br>");
+            document.write("No festive discounts for 1 or 2 tickets! <br/><br/>");
+            document.write("Number of tickets: " + seatsBooked + "<br>");
+            document.write("Amount payable: " + calculateDiscount(seatsBooked));
+        }
+        else {
+            document.write("Actual cost per ticket: "+ticketCost + "<br>");
+            document.write("3-5 seats are eligible for festive discounts! <br/><br/>");
+            document.write("5% discount on Ticket 1" + "<br>");
+            document.write("7% discount on Ticket 2" + "<br>");
+            document.write("9% discount on Ticket 3" + "<br>");
+            document.write("11% discount on Ticket 4" + "<br>");
+            document.write("13% discount on Ticket 5" + " <br/><br/>");
+            document.write("Number of tickets: " + seatsBooked + "<br>");
+            document.write("Total Cost before discount: "+calculateCost(seatsBooked) + "<br>");
+            document.write("Amount payable after discount: " + calculateDiscount(seatsBooked));
+           }
+
+        </script>
+        </div>
+    </center>
+</body>
+ 
+</html>
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String Manipulation</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #output {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .row-left{
+        float: left;
+    }
+    .row-right{
+        float: left;
+        margin-left: 15%;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Process String Manipulation</h2>
+  <div>
+    <label>Phone Brand</label>
+    <input type="text" name="brand" id="brand" onkeyup="collectData()"></input>
+    <label>Phone Model</label>
+    <input type="text" name="model" id="model" onkeyup="collectData()"></input>
+  </div>
+  <div class="row">
+    <div class="row-left">
+        <button onclick="concatenateStrings()">Concatenate</button> <br><br>
+        <button onclick="findStringLength()">Find Length</button> <br><br>
+        <button onclick="getCharacter()">Get Character</button> <br><br>
+        <button onclick="getSubstring()">Get Substring</button> <br><br>
+        <button onclick="convertCase()">Convert Case</button> <br>
+    </div>
+    <div class="row-right">
+        <div id="output"></div>
+    </div>
+  </div>
+  <script>
+    var b;
+    var m;
+    var result;
+
+    function collectData(){
+        b = document.getElementById('brand').value;
+        m = document.getElementById('model').value;
+        result = b + ' ' + m;
+    }
+
+    // Function to concatenate strings
+    function concatenateStrings() {
+      displayOutput(result);
+    }
+
+    // Function to find the length of a string
+    function findStringLength() {
+      const length = result.length;
+      displayOutput(`Model Length: ${length}`);
+    }
+
+    // Function to access a character by index
+    function getCharacter() {
+      const charAtIndex = result[2];
+      displayOutput(`Character at index 2: ${charAtIndex}`);
+    }
+
+    // Function to extract a substring
+    function getSubstring() {
+      const substring = result.substring(4, 8);
+      displayOutput(`Substring: ${substring}`);
+    }
+
+    // Function to convert case
+    function convertCase() {
+      const originalStr = result;
+      const uppercaseStr = originalStr.toUpperCase();
+      const lowercaseStr = originalStr.toLowerCase();
+      displayOutput(`
+        Original: ${originalStr}<br>
+        Uppercase: ${uppercaseStr}<br>
+        Lowercase: ${lowercaseStr}
+        `);
+    }
+
+    // Function to display the output
+    function displayOutput(result) {
+      document.getElementById('output').innerHTML = `Result: ${result}`;
+    }
+  </script>
+
+</body>
+</html>
+
+

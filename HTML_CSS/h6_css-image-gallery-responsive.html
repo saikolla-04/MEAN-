@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.img {
+    border: 1px solid #ccc;
+}
+div.image:hover {
+    border: 2px solid #777;
+}
+div.responsive:hover {
+  border: 3px solid lightseagreen;
+}
+div.image img {
+    width: 100%;
+    height: auto;
+}
+div.desc {
+    padding: 10px;
+    text-align: center;
+    background-color: lightpink;
+}
+* {
+    box-sizing: border-box;
+}
+.responsive {
+  padding: 0 3px;
+  margin-right: 5px;
+  float: left;
+  width: 24.5%;
+}
+@media only screen and (max-width: 900px){
+    .responsive {
+        width: 49.99%;
+        margin: 6px 0;
+    }
+}
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<h2>Responsive Image Gallery</h2>
+<h4>Resize the browser window to see the effect.</h4>
+
+<div class="responsive">
+  <div class="image">
+    <a target="_blank" href="images/nature3.jpg">
+      <img src="images/nature3.jpg" alt="Rails" width="300" height="200">
+    </a>
+    <div class="desc">Train from Sec to Begumpet</div>
+  </div>
+</div>
+<!-- <a target="_blank|_self|_parent|_top|framename"> -->
+
+<div class="responsive">
+  <div class="image">
+    <a target="_blank" href="images/nature2.jpg">
+      <img src="images/nature2.jpg" alt="Park" width="600" height="400">
+    </a>
+    <div class="desc">The Lumbini Park at Tank Bund</div>
+  </div>
+</div>
+  
+<div class="responsive">
+  <div class="image">
+    <a target="_blank" href="images/nature3.jpg">
+      <img src="images/nature3.jpg" alt="Lake" width="600" height="400">
+    </a>
+    <div class="desc">Lake Hussein Sagar in Hyderabad</div>
+  </div>
+</div>
+  
+<div class="responsive">
+  <div class="image">
+    <a target="_blank" href="images/nature6.jpg">
+      <img src="images/nature6.jpg" alt="Lake" width="600" height="400">
+    </a>
+    <div class="desc">Lake Hussein Sagar in Hyderabad</div>
+  </div>
+</div>
+  
+<div class="clearfix"></div>
+
+</body>
+</html>

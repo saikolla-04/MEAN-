@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="keywords" content="Online, Shopping" />
+        <title>IEKart Shopping</title>
+    <style>
+    #titleBox {
+        margin-left: 50px;
+        width: 80%;
+        height: 5%;
+        align-content: center;
+    }
+
+    #formBox {
+        margin-left: 50px;
+        margin-top: 0; /* Adjusted to remove gap */
+        width: 80%;
+        align-self: center;
+        background-color: aliceblue;
+    }
+
+    </style>
+    </head>
+    <body>
+    <div>
+        <header id="titleBox">
+            <h2>Sign Up!</h2>
+        </header>
+    </div>
+    <div>
+        <article>
+            <form action="success.php" method="get" id="formBox">
+                <table>
+                    <tr>
+                        <td><br><label for="username">Username:</label></td>
+                        <td><br><input type="text" id="username" placeholder="Enter your username" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email_id">Email ID:</label></td>
+                        <td><input type="email" id="email_id" placeholder="Enter your email ID" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password:</label></td>
+                        <td><input type="password" id="password" placeholder="Enter your password" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="gender">Gender:</label></td>
+                        <td><label for="male">Male<input type="radio" id="male" name="gender" value="M" />&nbsp; 
+                            <label for="female">Female<input type="radio" id="female" name="gender" value="F" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="dob">DOB:</label></td>
+                        <td><input type="date" id="dob" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="phone_no">Phone number:</label></td>
+                        <td><input type="text" id="phone_no" placeholder="Enter your contact number" pattern="+ [0-9] {12}" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="country">Country:</label></td>
+                        <td><select id="country" placeholder="Select your country" contenteditable="false">
+                                <option value="India" />India
+                                <option value="USA" />USA
+                                <option value="UK" />UK
+                                <option value="Canada" />Canada
+                                <option value="Belgium" />Belgium
+                                <option value="France" />France </select></td>
+                    </tr>
+                    <tr>
+                        <td><label id="language">Languages Known:</label></td>
+                        <td><input type="checkbox" name="language1" id="english" value="English" checked="checked" />
+                            <label for="english">English </label> 
+                            <input type="checkbox" name="language2" id="hindi" value="Hindi" />
+                            <label for="hindi"> Hindi</label> 
+                            <input type="checkbox" name="language3" id="french" value="French" />
+                            <label for="french"> French </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="pic">Profile pic:</label></td>
+                        <td><input type="file" id="pic" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="yourself" dir="ltr" contenteditable="true">About yourself:</label></td>
+                        <td>
+                        <!-- Added contenteditable and spellcheck attribute -->
+                            <textarea dir="ltr" spellcheck="true"> 
+                            </textarea>
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Register" />
+                        <td><input type="reset" value="Reset" />
+                    </tr>
+                </table>
+            </form> <br /> <br /> <br /> <br />
+        </article>
+    </div>
+        <footer>
+            <nav> About Us | Privacy Policy | Contact Us | FAQ | Terms & Conditions </nav> Copyright &copy; 2018 | Giri
+        </footer>
+        <aside> Like and Connect with us FB Twitter g+ </aside>
+    </body>
+</html>

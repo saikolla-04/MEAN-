@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>Validate Customer Data</title>
+<style>
+#nameAlignment{
+    margin-left: 160px;
+}
+#emailAlignment{
+    margin-left: 97px;
+}
+#phoneAlignment{
+    margin-left: 130px;
+}
+#subjectAlignment{
+    margin-left: 55px;
+}
+#commentAlignment{
+    margin-left: 130px;
+}
+
+#submitAlignment{
+    margin-left: 210px;
+}
+#titleBox{
+    margin-left:50px;
+    width:80%;
+    height: 5%;
+    align-content: center;
+}
+#formBox{
+    margin-left:50px;
+    margin-top:30px;
+    width:80%;
+    align-self: center;
+    background-color:aliceblue;
+}
+</style>
+<script>
+function ValidateContactForm()
+{
+    var name = document.ContactForm.Name;
+    var email = document.ContactForm.Email;
+    var phone = document.ContactForm.Telephone;
+    var nocall = document.ContactForm.DoNotCall;
+    var subject = document.ContactForm.Subject;
+    var comment = document.ContactForm.Comment;
+
+//Check name
+    if (name.value == "")
+    {
+        //window.alert("Please enter your name.");
+        document.getElementById("nameLocation").innerHTML = "<img src='unchecked.gif'/> Please enter your name.";
+        name.focus();
+        return false;
+    }else {
+      document.getElementById("nameLocation").innerHTML = "<img src='checked.gif'/>";
+      //return true; *** DO NOT USE THIS AS IT WILL SEND CONTROL OUT WITHOUT CHECKING NEXT CONDITIONS ***
+          }
+
+//Check email
+    var atposition=email.value.indexOf("@");
+    var dotposition=email.value.lastIndexOf(".");
+    //text after . (dot), ex: .in  .com  .net  .de etc [min 2 letters].
+    var domain = email.value.substring(dotposition + 1); 
+    if (email.value == "" || atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length || domain.length < 2)
+    {
+      document.getElementById("emailLocation").innerHTML = "<img src='unchecked.gif'/> Please enter a valid e-mail address.";
+      email.focus();
+      return false;
+    } else {
+        document.getElementById("emailLocation").innerHTML = "<img src='checked.gif'/>";
+            }
+
+    if ((nocall.checked == false) && (phone.value == ""))
+    {
+      document.getElementById("numberLocation").innerHTML = "<img src='unchecked.gif'/> Please enter your telephone number";
+      phone.focus();
+      return false;
+    }
+    else if (isNaN(phone.value) || phone.value.length<10){
+        document.getElementById("numberLocation").innerHTML = "<img src='unchecked.gif'/> Enter Numeric 10 digit value only";
+      return false;
+      }else{
+        document.getElementById("numberLocation").innerHTML = "<img src='checked.gif'/>";
+      }
+
+    if (subject.selectedIndex < 1)
+    {
+        document.getElementById("subjectLocation").innerHTML = "<img src='unchecked.gif'/> Choose how we can be of your assistance.";
+        subject.focus();
+        return false;
+    }else {
+      document.getElementById("subjectLocation").innerHTML = "<img src='checked.gif'/>";
+    }
+
+    if (comment.value == "")
+    {
+        document.getElementById("commentLocation").innerHTML = "<img src='unchecked.gif'/> Provide your comment in detail.";
+        comment.focus();
+        return false;
+    }else{
+    document.getElementById("commentLocation").innerHTML = "<img src='checked.gif'/>";
+    }
+}
+
+function EnableDisable(chkbx)
+{
+    if(chkbx.checked == true)
+    {
+        document.ContactForm.Telephone.disabled = true;
+    }
+    else
+    {
+        document.ContactForm.Telephone.disabled = false;
+    }
+}
+</script>
+</head>
+
+<body>
+<div id="parentBox">
+    <div id="titleBox">
+    <h1> Contact Form</h1>
+</div>
+
+<div id="formBox">
+<!-- <form method="post" action="mailto:abc@gmail.com"  -->
+<form method="post" action="store_customer.php"
+name="ContactForm" onsubmit="return ValidateContactForm();">
+    <p>Name: <input type="text" size="35" name="Name" id="nameAlignment"><span id="nameLocation"></span><br/></p>
+    <p>E-mail Address:  <input type="text" size="35" name="Email"  id="emailAlignment"><span id="emailLocation"></span><br/></p>
+    <p>Telephone: <input type="text" size="35" name="Telephone"  id="phoneAlignment"><span id="numberLocation"></span><br/>
+        <input type="checkbox" name="DoNotCall"
+        onclick="EnableDisable(this);"> Please do not call me.</p>
+    <p>How can we help you?
+        <select type="text" value="" name="Subject"  id="subjectAlignment"><br/>
+            <option>  </option>
+            <option>Customer Service</option>
+            <option>Question</option>
+            <option>Comment</option>
+            <option>Consultation</option>
+            <option>Other</option>
+        </select><span id="subjectLocation"></span></p>
+    <p>Comments:  <textarea cols="55" name="Comment" id="commentAlignment">  </textarea><span id="commentLocation"></span><br/></p>
+    <p><input type="submit" value="Send" name="submit" id="submitAlignment">
+    <input type="reset" value="Reset" name="reset"></p>
+</form>
+</div>
+</div>
+
+</body>
+</html>

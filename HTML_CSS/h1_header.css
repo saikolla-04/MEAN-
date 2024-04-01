@@ -1,0 +1,16 @@
+
+h4 {background-color: lightyellow; 
+    color:green; 
+    font-style:italic  
+}
+h3 {font-family: 'Courier New', Courier, monospace;
+    background-color: lightgreen;
+    font-style:italic; 
+}
+body {background-color: lightcyan;
+     text-align: center;
+    }
+
+h1 {text-align: right;}
+
+p{color: red;}

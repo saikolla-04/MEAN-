@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mobile Cart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Add your CSS styles here -->
+<style>
+    .mobile{
+        float:left;
+        margin-left: 50px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mobile Cart</h1>
+        <div class="mobile" onclick="navigateToProductDetail('lumia')">
+            <img src="images/part1/lumia_640xl.jpg" alt="Lumia " width="150px" height="300px">
+            <h3>Lumia</h3>
+            <p>Price: $699</p>
+            <p>Status: In Stock</p>
+        </div>
+        <div class="mobile" onclick="navigateToProductDetail('samsung')">
+            <img src="images/part1/samsung_edge_gold.jpg" alt="Samsung Edge" width="150px" height="300px">
+            <h3>Samsung</h3>
+            <p>Price: $799</p>
+            <p>Status: Out of Stock</p>
+        </div>
+        <div class="mobile" onclick="navigateToProductDetail('galaxy')">
+            <img src="images/part1/SamsungGalaxy_Gold.jpg" alt="Samsung Galaxy" width="150px" height="300px">
+            <h3>Galaxy</h3>
+            <p>Price: $999</p>
+            <p>Status: In Stock</p>
+        </div>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>

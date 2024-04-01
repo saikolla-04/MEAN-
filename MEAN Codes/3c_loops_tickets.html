@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Details</title>
+    <style>
+        div#maincontent {
+            height: 200px;
+            width: 600px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            width: 600px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        h4 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+ <center>
+   <div id="heading">
+        <b>Theatre Drama (loops)</b>
+   </div>
+   <div id="maincontent">
+    <h4>Your Ticket Details:</h4>
+    <br>
+    <script>
+        let seatsBooked = 4;
+        const ticketCost = 150;
+        var d1 = 5;
+        var d2 = 7;
+        var d3 = 9;
+        var d4 = 11;
+        var d5 = 13;
+        var darr = [5,7,9,11,13];
+        let totalCost;
+        var discCost1,discCost2,discCost3,discCost4,discCost5;
+        var discTotalCost=0;
+
+        discCost1 = ticketCost*(1-.05);
+        discCost2 = ticketCost*(1-.07);
+        discCost3 = ticketCost*(1-.09);
+        discCost4 = ticketCost*(1-.11);
+        discCost5 = ticketCost*(1-.13);
+        if(seatsBooked<1){
+            document.write("Booking is not allowed!<br>");
+            document.write("You must buy atleast 1 upto 5 tickets<br>");
+        }
+        else if (seatsBooked>=6){
+            document.write("Booking is not allowed!<br>");
+            document.write("You must buy atleast 1, & only upto 5 tickets<br>");
+        }
+        else if (seatsBooked<=2){
+            custCount=1;
+            while(custCount<=seatsBooked) {
+                document.write("Ticket for customer "+custCount+" gets 0% discount! Cost is: " + ticketCost + "<br>");
+                custCount++;
+            }
+            document.write("For "+seatsBooked+" tickets, you need to pay: " + seatsBooked*ticketCost);
+        }
+        else {
+            for (let custCount=1; custCount<=seatsBooked; custCount++) {    
+                let tempCost=0;
+                if(custCount==1)
+                    tempCost=discCost1;
+                else if(custCount==2)
+                    tempCost=discCost2;
+                else if(custCount==3)
+                    tempCost=discCost3;
+                else if(custCount==4)
+                    tempCost=discCost4;
+                else
+                    tempCost=discCost5;
+                
+                discTotalCost+=tempCost;
+                document.write("Ticket for customer "+custCount+" gets "+ darr[custCount-1] +"% discount! Cost is: " + tempCost + "<br>");
+               }
+               document.write("For "+seatsBooked+" tickets, you need to pay: " + discTotalCost+" instead of "+seatsBooked*ticketCost);
+           }
+    </script>
+   </div>
+  </center>
+</body>
+</html>

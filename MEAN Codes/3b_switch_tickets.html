@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Details</title>
+    <style>
+        div#maincontent {
+            height: 200px;
+            width: 600px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            width: 600px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        h4 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+ <center>
+   <div id="heading">
+        <b>Theatre Drama (switch)</b>
+   </div>
+   <div id="maincontent">
+    <h4>Your Ticket Details:</h4>
+    <br>
+    <script>
+        let seatsBooked = 3;
+        const ticketCost = 150;
+        let d1 = 5;
+        let d2 = 7;
+        let d3 = 9;
+        let d4 = 11;
+        let d5 = 13;
+        let totalCost;
+        let discCost1,discCost2,discCost3,discCost4,discCost5;
+        let discTotalCost;
+
+        discCost1 = ticketCost*(1-.05);
+        discCost2 = ticketCost*(1-.07);
+        discCost3 = ticketCost*(1-.09);
+        discCost4 = ticketCost*(1-.11);
+        discCost5 = ticketCost*(1-.13);
+
+        switch (seatsBooked) {
+	    case 1:
+		    document.write("Ticket for customer 1 gets 0% discount! Cost is: " + ticketCost + "<br>");
+		    document.write("For 1 ticket, you need to pay: " + ticketCost);
+		    break;
+	    case 2:
+            document.write("Ticket for customer 1 gets 0% discount! Cost is: " + ticketCost + "<br>");
+            document.write("Ticket for customer 2 gets 0% discount! Cost is: " + ticketCost + "<br>");
+            document.write("For 2 tickets, you need to pay: " + 2*ticketCost);
+            break;
+        case 3:
+            document.write("Ticket for customer 1 gets 5% discount! Cost is: " + discCost1 + "<br>");
+            document.write("Ticket for customer 2 gets 7% discount! Cost is: " + discCost2 + "<br>");
+            document.write("Ticket for customer 3 gets 9% discount! Cost is: " + discCost3 + "<br>");
+            discTotalCost=discCost1 + discCost2 + discCost3;
+            document.write("For 3 tickets, you need to pay: " + discTotalCost + " instaed of "+3*ticketCost);
+            break;
+        case 4:
+            document.write("Ticket for customer 1 gets 5% discount! Cost is: " + discCost1 + "<br>");
+            document.write("Ticket for customer 2 gets 7% discount! Cost is: " + discCost2 + "<br>");
+            document.write("Ticket for customer 3 gets 9% discount! Cost is: " + discCost3 + "<br>");
+            document.write("Ticket for customer 4 gets 11% discount! Cost is: " + discCost4 + "<br>");
+            discTotalCost=discCost1 + discCost2 + discCost3 + discCost4;
+            document.write("For 4 tickets, you need to pay: " + discTotalCost + " instaed of "+4*ticketCost);
+            break;
+        case 5:
+            document.write("Ticket for customer 1 gets 5% discount! Cost is: " + discCost1 + "<br>");
+            document.write("Ticket for customer 2 gets 7% discount! Cost is: " + discCost2 + "<br>");
+            document.write("Ticket for customer 3 gets 9% discount! Cost is: " + discCost3 + "<br>");
+            document.write("Ticket for customer 4 gets 11% discount! Cost is: " + discCost4 + "<br>");
+            document.write("Ticket for customer 5 gets 13% discount! Cost is: " + discCost5 + "<br>");
+            discTotalCost=discCost1 + discCost2 + discCost3 + discCost4 + discCost4;
+            document.write("For 5 tickets, you need to pay: " + discTotalCost + " instaed of "+5*ticketCost);
+            break;
+	    default:
+            document.write("Booking is not allowed!<br>");
+            document.write("You can buy tickets from 1 upto 5<br>");
+        }
+    </script>
+   </div>
+  </center>
+</body>
+</html>

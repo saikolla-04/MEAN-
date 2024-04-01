@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #carform{
+      text-align: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body onpageshow="pop_promotion()">
+
+<form action="process.php" id="carform" method="post">
+Name: <input type="text" name="pname" required><br><br>
+Phone: <input type="number" name="phone" required><br><br>
+
+Car: <select name="carbrand" required>
+<option value="">None</option>
+    <optgroup label="Germany">
+      <option value="bmw">BMW</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </optgroup>
+
+    <optgroup label="USA">
+      <option value="ford">Ford</option>
+      <option value="gm">GM</option>
+    </optgroup>
+
+    <optgroup label="Swedish">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+    </optgroup>
+
+    <optgroup label="Asia">
+      <option value="toyota">Toyota</option>
+      <option value="honda">Honda</option>
+      <option value="kia">Kia</option>
+    </optgroup>
+</select>
+<br> <br>
+<input type="submit" value="Submit">
+</form>
+
+ 
+<script>
+function pop_promotion()
+{
+alert("Choose your prefered car brand!");
+}
+</script>
+
+</body>

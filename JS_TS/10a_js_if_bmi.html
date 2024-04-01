@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #output {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>BMI Calculator</h2>
+  <label for="weight">Enter Weight (kg): </label>
+  <input type="number" id="weight" step="any">
+  <br>
+  <label for="height">Enter Height (m): </label>
+  <input type="number" id="height" step="any">
+  <br>
+  <button onclick="calculateBMI()">Calculate BMI</button>
+  <div id="output"></div>
+  <div>
+    <img src="images/bmi_chart.png" width="60%" height="40%"></img>
+  </div>
+  <script>
+    function calculateBMI() {
+      // Get user input for weight and height
+      let weight = parseFloat(document.getElementById('weight').value);
+      let height = parseFloat(document.getElementById('height').value);
+
+      // Check if input is valid
+      if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+        alert('Please enter valid values for weight and height.');
+        return;
+      }
+      // Calculate BMI
+      let bmi = weight / (height * height);
+      // Determine weightb status
+      let weightStatus;
+      let outputElement=document.getElementById("output");
+      if (bmi < 18.5) {
+        weightStatus = 'Underweight';
+        outputElement.style.color="blue";
+      } else if (bmi >= 18.5 && bmi <= 24.9) {
+        weightStatus = 'Healthy Weight';
+        outputElement.style.color="green";
+      } else if (bmi >= 25 && bmi <= 29.9) {
+        weightStatus = 'Overweight';
+        outputElement.style.color="yellow";
+      } else {
+        weightStatus = 'Obesity';
+        outputElement.style.color="red";
+      }
+      // Display the result
+      document.getElementById('output').innerHTML = `
+        Your BMI: ${bmi.toFixed(2)}<br>Weight Status: ${weightStatus}`;
+    }
+  </script>
+
+</body>
+</html>

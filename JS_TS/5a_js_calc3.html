@@ -1,0 +1,111 @@
+<!--Function calls for each calculation -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #calculator {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      max-width: 300px;
+      margin: auto;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pro Calculator</h1>
+  <div id="calculator">
+    <input type="text" id="result" disabled>
+
+    <!-- Buttons for numbers and operations -->
+    <button onclick="appendToResult('1')">1</button>
+    <button onclick="appendToResult('2')">2</button>
+    <button onclick="appendToResult('3')">3</button>
+    <button onclick="operate('+')">+</button>
+    <button onclick="appendToResult('4')">4</button>
+    <button onclick="appendToResult('5')">5</button>
+    <button onclick="appendToResult('6')">6</button>
+    <button onclick="operate('-')">-</button>
+    <button onclick="appendToResult('7')">7</button>
+    <button onclick="appendToResult('8')">8</button>
+    <button onclick="appendToResult('9')">9</button>
+    <button onclick="operate('*')">*</button>
+    <button onclick="appendToResult('0')">0</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="clearResult()">C</button>
+    <button onclick="operate('/')">/</button>
+    <button onclick="calculatePercentage()">%</button>
+    <button onclick="calculateSquare()">x²</button>
+  </div>
+
+  <script>
+    // Variable declarations
+    var currentInput = '';
+    let previousInput = '';
+    const resultField = document.getElementById('result');
+
+    // Function to append numbers to the input field
+    function appendToResult(value) {
+      currentInput += value;
+      resultField.value = currentInput;
+    }
+
+    // Function to perform basic arithmetic operations
+    function operate(operator) {
+      previousInput = currentInput;
+      currentInput = operator;
+    }
+
+    // Function to calculate the result
+    function calculate() {
+      if (previousInput !== '' && currentInput !== '') {
+        const result = eval(previousInput + currentInput);
+        resultField.value = result;
+        currentInput = result.toString();
+        previousInput = '';
+      }
+    }
+
+    // Function to clear the input field
+    function clearResult() {
+      currentInput = '';
+      previousInput = '';
+      resultField.value = '';
+    }
+
+    // Function to calculate percentage
+    function calculatePercentage() {
+      if (currentInput !== '') {
+        const result = parseFloat(currentInput) / 100;
+        resultField.value = result;
+        currentInput = result.toString();
+      }
+    }
+
+    // Function to calculate square
+    function calculateSquare() {
+      if (currentInput !== '') {
+        const result = parseFloat(currentInput) ** 2;
+        resultField.value = result;
+        currentInput = result.toString();
+      }
+    }
+  </script>
+
+</body>
+</html>

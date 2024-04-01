@@ -1,0 +1,37 @@
+ 
+ <html>
+  <head>
+  <script>
+  function convert(currency){var money;
+ if (currency == 'INR')
+ { money = document.getElementById("IN_Currency").value;
+  document.getElementById("US_Currency").value = (money/83.07).toFixed(3);
+  document.getElementById("UK_Currency").value = (money/105.15).toFixed(3);
+}
+else if (currency == 'USD')
+ {
+   money = document.getElementById("US_Currency").value;
+   document.getElementById("IN_Currency").value = Math.round((money*83.07));
+   document.getElementById("UK_Currency").value = (money/1.27).toFixed(3);
+ }
+ else if (currency == 'UKP')
+ {
+   money = document.getElementById("UK_Currency").value;
+   document.getElementById("IN_Currency").value = (money*105.15).toFixed(3);
+   document.getElementById("US_Currency").value = (money*1.27).toFixed(3);
+ }
+
+ }
+</script>
+
+</head>
+ <body>
+<h3> Currency Conversion</h3>
+
+IN &#x20B9; <input type"text" id="IN_Currency" onkeyup="convert('INR')">
+US &#x0024; <input type"text" id="US_Currency" onkeyup="convert('USD')">
+UK &#xa3; <input type"text" id="UK_Currency" onkeyup="convert('UKP')">
+<!-- <button onclick="convert('INR')" value="Convert">  -->
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Object</title>
+</head>
+<body>
+    <h2>Window Object</h2>
+    <form name="myform">
+        <label>Enter Name</label> 
+        <input type="text" name="myname">
+        <!-- Method 1: Alert -->
+        <input type="button" value="Wish" 
+            onclick="window.alert('Hello ' + document.myform.myname.value);">
+        <!--
+        <input type="button" value="Wish" 
+            onclick="window.alert('Hello ' + document.forms.myform.myname.value);">
+        -->
+        </form>
+    <br>
+    <button onclick="openNewWindow()">Open CIT site</button>
+
+  <script>
+    // Method 2: Confirm
+    let userConfirmation = window.confirm("Do you want to proceed?");
+    if (userConfirmation) {
+        // Method 3: Prompt
+        let phNum = window.prompt("Enter your phone:", "phone number");
+        if (phNum !== null) {
+            window.alert("Your Ph: " + phNum + "!");
+        } else {
+            window.alert("User canceled the prompt.");
+    }
+    } else {
+        window.alert("Do not proceed.");
+    }
+
+    // Method 4: Open a new window
+    function openNewWindow() {
+      window.open("https://city.ac.in/", "_blank");
+    }
+    </script>
+</body>
+</html>

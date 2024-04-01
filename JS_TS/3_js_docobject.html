@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Object</title>
+  <style>
+    /* Define a style for demonstration purposes */
+    .highlight {
+      background-color: lightskyblue;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="mainHeading">Document Object: Indian Cities!</h1>
+
+  <p id="city">There are many cities in India. 
+    Population in each city varies based on its size.<br>
+    Click on one of the following buttons to find Population
+    in the selected city.
+  </p>
+
+  <button id="gunturBtn" onclick="gPopulation()">Guntur Population</button>
+  <button id="vijBtn" onclick="vPopulation()">Vijayawada Population</button>
+  <button id="markBtn" onclick="markElement()">Mark Header</button>
+
+  <script>
+    // Function to change text content of the paragraph
+    function gPopulation() {
+      let pElement = document.getElementById("city");
+      pElement.innerHTML = "<b>Guntur</b><br>Guntur is a Tier-3 City with 981,000 population!";
+    }
+    function vPopulation() {
+        let pElement = document.getElementById("city");
+        pElement.innerHTML = "<b>Vijayawada</b><br>Vijayawada is a Tier-3 City with 1,000,000 population!";
+      }
+
+    // Function to highlight the heading
+    function markElement() {
+      //let headingElement = document.getElementById("mainHeading");
+      let headingElement = document.querySelector("h1");
+      headingElement.classList.toggle("highlight");
+    }
+  </script>
+</body>
+</html>

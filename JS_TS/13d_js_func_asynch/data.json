@@ -1,0 +1,18 @@
+[{
+  "id": 1,
+  "item": "Speaker",
+  "brand": "BASS",
+  "bought": false
+},
+{
+    "id": 2,
+    "item": "Laptop",
+    "brand": "DELL",
+    "bought": true
+  },
+  {
+    "id": 3,
+    "item": "Mobile",
+    "brand": "Samsung",
+    "bought": true
+  }]

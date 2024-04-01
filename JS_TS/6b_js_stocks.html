@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stocks Portfolio</title>
+  <style>
+    #portfolio{
+        margin-left: 10%;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+    }
+    h1 {
+      text-align: left;
+    }
+/*
+    label, input, select {
+      display: block;
+      margin-bottom: 5px;
+    }
+*/
+    button {
+      margin-top: 5px;
+    }
+    .row{
+        width:80%;
+    }
+    .labelName{
+        width: 30%;
+        float: left;
+    }
+    .field{
+        width: 30%;
+        float: left;
+    }
+  </style>
+</head>
+<body>
+<div id="portfolio">
+  <h1>Stocks Portfolio Calculator</h1>
+
+  <div class="row">
+    <div class="labelName">
+        <label for="stockSelect">Select Stock:</label>
+    </div>
+    <div class="field">
+    <select id="stockSelect">
+        <option value="AAPL">Apple</option>
+        <option value="GOOGL">Google</option>
+        <option value="MSFT">Microsoft</option>
+        <option value="AMZN">Amazon</option>
+    </select>
+    </div>
+  </div>
+  <br><br>
+
+  <div class="row">
+    <div class="labelName">
+        <label for="price">Price per Share:</label>
+    </div>
+    <div class="field">    
+        <input type="number" id="price" value=0.00
+          onkeyup="calculateTotalValue()"
+          onchange="calculateTotalValue()">
+    </div>
+  </div>    
+  <br><br>
+
+  <div class="row">
+    <div class="labelName">
+        <label for="quantity">Quantity:</label>
+    </div>
+    <div class="field"> 
+        <input type="number" id="quantity" value=0 
+        onkeyup="calculateTotalValue()"
+        onchange="calculateTotalValue()">
+    </div>
+  </div>
+  <br><br>
+
+  <div style="margin-left:25%;">
+  <button onclick="calculateTotalValue()">Calculate Total Value</button>
+  </div>
+  <br><br>
+
+  <div class="row">
+    <div class="labelName">
+        <label for="totalValue">Total Portfolio Value:</label>
+    </div>
+  </div>
+  <div class="field"> 
+        <input type="text" id="totalValue" readonly>
+  </div>
+</div>      
+</div>
+  <script>
+    function calculateTotalValue() {
+      var stockSelect = document.getElementById("stockSelect");
+      var price = document.getElementById("price").value;
+      var quantity = document.getElementById("quantity").value;
+      var totalValue = price * quantity;
+
+      document.getElementById("totalValue").value = totalValue.toFixed(2);
+    }
+  </script>
+</body>
+</html>
+
+

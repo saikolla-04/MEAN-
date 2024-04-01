@@ -1,0 +1,157 @@
+<!-- 
+4.c Course Name: Javascript
+Module Name: In-built Events and Handlers
+Write a JavaScript code to book movie tickets online and calculate the total price 
+based on the 3 conditions: 
+(a) If seats to be booked are not more than 2, the cost per 
+ticket remains Rs. 150. 
+(b) If seats are 6 or more, booking is not allowed. 
+(c) If seats to be booked are more than 2 but 5 or less than 5, based on the number of seats booked, do the following:
+Calculate total cost by applying a discount of 5, 7, 9, 11,13 percent, and so on for customer 1,2,3 till 5.
+    Try the code with different values for the number of seats. 
+    Write the following custom functions to implement given requirements:  
+calculateCost(seats): Calculate and display the total cost to be paid by the customer for the tickets he has bought. 
+calculateDiscount(seats): Calculate discount on the tickets bought by the customer. Invoke this function only when the user clicks on a link. 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Details</title>
+    <style>
+        div#maincontent {
+            height: 100px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 40px;
+            margin-left: 10px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        h2 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div id="heading">
+          <h2>Booking Summary</h2>
+    </div>
+    <button onclick="document.getElementById('maincontent').innerHTML=bookTickets()">
+        Book Movie Tickets 
+    </button>
+    <div id="maincontent">
+    </div>
+    <script>
+        
+        const ticketCost = 150;
+        var d1 = 5;
+        var d2 = 7;
+        var d3 = 9;
+        var d4 = 11;
+        var d5 = 13;
+        let totalCost;
+        var discCost1,discCost2,discCost3,discCost4,discCost5;
+        var discTotalCost=0;
+
+        //eval() built-in event function
+        discCost1 = eval(ticketCost*(1-.05));
+        discCost2 = eval(ticketCost*(1-.07));
+        discCost3 = eval(ticketCost*(1-.09));
+        discCost4 = eval(ticketCost*(1-.11));
+        discCost5 = eval(ticketCost*(1-.13));
+        
+        //Functions //
+        function calculateCost(seats){
+            return seats*ticketCost;
+        }
+
+        //Arrow Function
+        calculateDiscount = (seats) => {
+        
+            if (seats==1 || seats==2){
+                return seats*ticketCost;
+            }
+            else{
+            for (let custCount=1; custCount<=seats; custCount++) {    
+                let tempCost=0;
+                if(custCount==1)
+                    tempCost=discCost1;
+                else if(custCount==2)
+                    tempCost=discCost2;
+                else if(custCount==3)
+                    tempCost=discCost3;
+                else if(custCount==4)
+                    tempCost=discCost4;
+                else
+                    tempCost=discCost5;
+                
+                discTotalCost+=tempCost;
+            }
+            }
+            return discTotalCost;
+        }
+        
+        function bookTickets(){
+        //Display the booking summary; try-catch exception
+        //alert("Let us book movie tickets!");
+        var seatsBooked = prompt("Enter seats to book (1-5): ");
+        try{
+        if(isNaN(seatsBooked)) throw "not a number";
+        if(seatsBooked<1){
+            document.write("Booking is not allowed!<br>");
+            document.write("You must buy atleast 1 upto 5 tickets<br>");
+            //console.log("Booking is not allowed!<br>");
+            //console.log("You must buy atleast 1 upto 5 tickets<br>");
+        }
+        else if (seatsBooked>=6){
+            document.write("Booking is not allowed!<br>");
+            document.write("You must buy atleast 1, & only upto 5 tickets<br>");
+        }
+        else if (seatsBooked<=2){
+            document.write("Actual cost per ticket: "+ticketCost + "<br>");
+            document.write("No festive discounts for 1 or 2 tickets! <br/><br/>");
+            document.write("Number of tickets: " + seatsBooked + "<br>");
+            document.write("Amount payable: " + calculateDiscount(seatsBooked));
+        }
+        else {
+            document.write("Actual cost per ticket: "+ticketCost + "<br>");
+            document.write("3-5 seats are eligible for festive discounts! <br/><br/>");
+            document.write("5% discount on Ticket 1" + "<br>");
+            document.write("7% discount on Ticket 2" + "<br>");
+            document.write("9% discount on Ticket 3" + "<br>");
+            document.write("11% discount on Ticket 4" + "<br>");
+            document.write("13% discount on Ticket 5" + " <br/><br/>");
+            document.write("Number of tickets: " + seatsBooked + "<br>");
+            document.write("Total Cost before discount: "+calculateCost(seatsBooked) + "<br>");
+            document.write("Amount payable after discount: " + calculateDiscount(seatsBooked));
+           }
+        }
+        catch(err) {
+            message.innerHTML = "Input is " + err;   
+        }
+        }
+        
+        //var result = document.getElementById('maincontent');
+        //result.innerHTML='<button onclick="bookTickets();">Book Movie Tickets</button>';
+    </script>
+</body>
+</html>

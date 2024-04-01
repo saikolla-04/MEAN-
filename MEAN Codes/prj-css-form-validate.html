@@ -1,0 +1,154 @@
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up Form</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="prj-css-form-validate.css">
+</head>
+
+    <body>
+      <!comment: form action="customer.php" method="post"  >
+      <form method="post" action="customer.php"
+        name="ContactForm" onsubmit="return ValidateContactForm();">
+        <h1>Fill in </h1>
+
+        <fieldset>
+          <legend><span class="number">1</span>Personal Data</legend>
+          <label for="name">Name:</label>
+          <input type="text" id="name" class="field-focus-mode" name="user_name"><span id="nameWarn"></span>
+
+          <label for="mail">Email:</label>
+          <input type="email" id="mail"  class="field-focus-mode" name="user_email"><span id="emailWarn"></span>
+
+          <label for="password">Password:</label>
+          <input type="password" id="password"  class="field-focus-mode" name="user_password"><span id="passwordWarn"></span>
+
+          <label>Age:</label>
+          <input type="radio" id="under_30" value="under_30" name="user_age"><label for="under_30" class="light">Under 30</label><br>
+          <input type="radio" id="over_30" value="over_30" name="user_age"><label for="over_30" class="light">30 or older</label>
+          &nbsp;&nbsp;<span id="ageWarn"></span>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="number">2</span>Your profile</legend>
+          <label for="bio">Biography:</label>
+          <textarea id="bio"  class="field-focus-mode" name="user_bio"></textarea>
+        </fieldset>
+        <fieldset>
+        <label for="job">Job Role:</label>
+        <select id="job" name="user_job">
+          <optgroup label="Web">
+            <option value="frontend_developer">Front-End Developer</option>
+            <option value="php_developor">PHP Developer</option>
+            <option value="python_developer">Python Developer</option>
+            <option value="rails_developer"> Rails Developer</option>
+            <option value="web_designer">Web Designer</option>
+            <option value="WordPress_developer">WordPress Developer</option>
+          </optgroup>
+          <optgroup label="Mobile">
+            <option value="Android_developer">Androild Developer</option>
+            <option value="iOS_developer">iOS Developer</option>
+            <option value="mobile_designer">Mobile Designer</option>
+          </optgroup>
+          <optgroup label="Business">
+            <option value="business_owner">Business Owner</option>
+            <option value="freelancer">Freelancer</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option value="secretary">Secretary</option>
+            <option value="maintenance">Maintenance</option>
+          </optgroup>
+        </select>
+        
+
+          <label>Interests:</label>
+          <input type="checkbox" id="development" value="interest_development" name="user_interest"><label class="light" for="development">Development</label><br>
+          <input type="checkbox" id="design" value="interest_design" name="user_interest"><label class="light" for="design">Design</label><br>
+          <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Business</label><br>
+          <input type="checkbox" id="cheff" value="interest_cheff" name="user_interest"><label class="light" for="cheff">Cheff</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span id="interestWarn"></span>
+        </fieldset>
+        <button type="submit">Sign Up</button>
+        <button type="reset">Reset</button>
+      </form>
+      <script>
+        function ValidateContactForm()
+        {
+            var name = document.ContactForm.user_name;
+            var email = document.ContactForm.user_email;
+            var password = document.ContactForm.user_password;
+            var age = document.ContactForm.user_age;
+            var interest = document.ContactForm.user_interest;
+        
+        //Check name
+            if (name.value == "")
+            {
+                //window.alert("Please enter your name.");
+                document.getElementById("nameWarn").innerHTML = "<img src='unchecked.gif'/> Enter name.";
+                document.getElementById("name").style = "background-color:yellow";
+                name.focus();
+                return false;
+            }else {
+              document.getElementById("nameWarn").innerHTML = "<img src='checked.gif'/>";
+              //return true; *** DO NOT USE THIS AS IT WILL SEND CONTROL OUT WITHOUT CHECKING NEXT CONDITIONS ***
+                  }
+        //Check email
+                var atposition=email.value.indexOf("@");
+                var dotposition=email.value.lastIndexOf(".");
+              //  window.alert(email.value +"atpostion:"+atposition+"\n dotposition:"+dotposition);
+                if (email.value == "" || atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length)
+                {
+                  //window.alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);
+                  //window.alert("Please enter a valid e-mail address.");
+                  document.getElementById("emailWarn").innerHTML = "<img src='unchecked.gif'/> Enter email";
+                  document.getElementById("mail").style = "background-color:yellow";
+                  email.focus();
+                  return false;
+                }else {
+                  document.getElementById("emailWarn").innerHTML = "<img src='checked.gif'/>";
+                  //return true; *** DO NOT USE THIS AS IT WILL SEND CONTROL OUT WITHOUT CHECKING NEXT CONDITIONS ***
+                      }
+        //check password
+            if (password.value=="" || password.value.length<8)
+            {
+              document.getElementById("passwordWarn").innerHTML = "<img src='unchecked.gif'/> Enter password, min:8";
+              //window.alert("Please enter your telephone number.");
+              document.getElementById("password").style = "background-color:yellow";
+              password.focus();
+              return false;
+            }
+            else{
+                document.getElementById("passwordWarn").innerHTML = "<img src='checked.gif'/>";
+                //return true; *** DO NOT USE THIS AS IT WILL SEND CONTROL OUT WITHOUT CHECKING NEXT CONDITIONS ***
+        
+              }
+        //check age
+        if (age.value=="")
+        {
+          document.getElementById("ageWarn").innerHTML = "<img src='unchecked.gif'/> Select age";
+          //window.alert("Please enter your telephone number.");
+          //age.focus();  //doesn't work 'cause of multiple items
+          return false;
+        }
+        else{
+            document.getElementById("ageWarn").innerHTML = "<img src='checked.gif'/>";
+            //return true; *** DO NOT USE THIS AS IT WILL SEND CONTROL OUT WITHOUT CHECKING NEXT CONDITIONS ***
+          }              
+          if (interest.value=="")
+          {
+            document.getElementById("interestWarn").innerHTML = "<img src='unchecked.gif'/> Select min. 1 interest!";
+            //window.alert("Please enter your telephone number.");
+            //interest.focus();  //doesn't work 'cause of multiple items
+            return false;
+          }
+          else{
+              document.getElementById("interestWarn").innerHTML = "<img src='checked.gif'/>";
+              //return true; *** DO NOT USE THIS AS IT WILL SEND CONTROL OUT WITHOUT CHECKING NEXT CONDITIONS ***
+            }          
+
+          }
+
+    </script>
+    </body>
+</html>
